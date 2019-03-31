@@ -1,0 +1,19 @@
+
+# This file allows the app to run as a service (automatically on startup) 
+
+[Unit]
+Description=Docker Compose Application Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# match the below to wherever you copied your docker-compose.yml
+WorkingDirectory=/srv/docker
+ExecStart=/usr/local/bin/docker-compose up -d
+ExecStop=/usr/local/bin/docker-compose down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+version: '3.7'
+services:
+  springboot:
+    image: kbaynes/springboot-helloworld:latest
+    ports:
+      - "80:8080"
